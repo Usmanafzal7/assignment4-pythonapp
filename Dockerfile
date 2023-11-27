@@ -1,18 +1,17 @@
 FROM python:3.10.13-alpine
 
-LABEL name="Python Application" \  
-     maintainer="Usman Afzal <usmanafzal587@gmail.com>" \
-     summary="Dockerizing this Python Flask Application"
+LABEL name="Python Application" \   
+     maintainer="Ali Kahoot <kahoot.ali@outlook.com>" \
+     summary="A Sample Python application"
 
 WORKDIR /app
 
-COPY ./requirements.txt /app
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . /app
+RUN pip install -r 'requirements.txt'
 
 EXPOSE 8080
 
-CMD ["python", "app.py"]
+COPY . ./
 
+CMD [ "python", "./app.py" ]
